@@ -10,16 +10,16 @@ export const storeState = (initialState) => {
     const newState = stateChangeFunction(currentState);
     currentState = {...newState};
     return newState;
-  }
-}
+  };
+};
 
-export const warriorInitialValues = {name:"", strength: 50, health: 100, resistance: 100, speed: 20, intelligence: 20, agility: 20, charisma: 40}
-export const archerInitialValues = {name:"", strength: 20, health: 100, resistance: 80, speed: 40, intelligence: 30, agility: 60, charisma: 0}
-export const commanderInitialValues = {name:"", strength: 30, health: 100, resistance: 100, speed: 20, intelligence: 20, agility: 20, charisma: 100} //
-export const scientistInitialValues = {name:"", strength: 10, health: 80, resistance: 80, speed: 10, intelligence: 80, agility: 10, charisma: 0}
-export const assassinInitialValues = {name:"", strength: 50, health: 100, resistance: 80, speed: 50, intelligence: 30, agility: 80, charisma: 0}
+export const warriorInitialValues = { strength: 50, health: 100, resistance: 100, speed: 20, intelligence: 20, agility: 20, charisma: 40};
+export const archerInitialValues = { strength: 20, health: 100, resistance: 80, speed: 40, intelligence: 30, agility: 60, charisma: 0};
+export const commanderInitialValues = { strength: 30, health: 100, resistance: 100, speed: 20, intelligence: 20, agility: 20, charisma: 100}; //
+export const scientistInitialValues = { strength: 10, health: 80, resistance: 80, speed: 10, intelligence: 80, agility: 10, charisma: 0};
+export const assassinInitialValues = { strength: 50, health: 100, resistance: 80, speed: 50, intelligence: 30, agility: 80, charisma: 0};
 
-export const enemyInitialValues = {strength: 50, health: 100}
+export const enemyInitialValues = {strength: 50, health: 100};
 
 export const warrior = storeState(warriorInitialValues);
 export const archer = storeState(archerInitialValues);
@@ -47,12 +47,19 @@ export const agilityLevel = changeState("agility")(40);
 export const charismaLevel = changeState("charisma")(0);
 //const comCharismaLevel = changeState("charisma")(50);
 
-export const newCharactor = (name) => {
+export const charName = (name) => {
   let state = {
     name
-  }
+  };
+  return state;
+};
 
-  return { ...state, ...strengthLevel(newCharactor), ...healthLevel(newCharactor), ...resistanceLevel(newCharactor), ...speedLevel(newCharactor), ...intelligenceLevel(newCharactor), ...agilityLevel(newCharactor), ...charismaLevel(newCharactor)};
+export const levelUp = (name) => {
+  let state = {
+    name
+  };
+
+  return { ...state, ...strengthLevel(state), ...healthLevel(state), ...resistanceLevel(state), ...speedLevel(state), ...intelligenceLevel(state), ...agilityLevel(state), ...charismaLevel(state)};
 };
 
 
